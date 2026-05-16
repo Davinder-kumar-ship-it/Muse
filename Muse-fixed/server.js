@@ -9,7 +9,7 @@ const register      = require('./routes/register.js');
 const userExist     = require('./controllers/userExist.js');
 const activeSession = require('./controllers/tokenIsValid.js');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 // Supported file types for static serving
 const MIME = {
