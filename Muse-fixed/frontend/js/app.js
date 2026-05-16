@@ -1,6 +1,6 @@
 'use strict';
 
-var API      = 'http://localhost:8000';
+var API      = 'https://muse-7g3h.vercel.app/signup';
 var token    = localStorage.getItem('token');
 var username = localStorage.getItem('username');
 var currentMood = null;

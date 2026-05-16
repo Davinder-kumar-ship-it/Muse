@@ -1,6 +1,6 @@
 'use strict';
 
-const API = 'http://localhost:8000';
+const API = 'https://muse-7g3h.vercel.app/signup';
 
 // ── Tab switching ────────────────────────────────────────────────────────────
 document.querySelectorAll('.tab').forEach(function(tab) {
