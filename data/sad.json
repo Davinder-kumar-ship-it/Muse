@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "song": "Hazaron Khwahishen Aisi",
+    "artist": "Mirza Ghalib (ghazal)",
+    "text": "Hazaron khwahishen aisi ke har khwahish pe dam nikle...",
+    "language": "Urdu",
+    "theme": "longing",
+    "youtubeLink": "https://www.youtube.com/results?search_query=hazaron+khwahishen+aisi+ghalib+ghazal",
+    "vibe_colors": { "background": "#0f1624", "accent": "#4a90d9" }
+  },
+  {
+    "id": 2,
+    "song": "Ajj Aakhaan Waris Shah Nu",
+    "artist": "Amrita Pritam",
+    "text": "Ajj aakhaan Waris Shah nu, kittu qabraan vichon bol...",
+    "language": "Punjabi",
+    "theme": "grief",
+    "youtubeLink": "https://www.youtube.com/results?search_query=ajj+aakhaan+waris+shah+amrita+pritam",
+    "vibe_colors": { "background": "#131a2e", "accent": "#6b8cba" }
+  },
+  {
+    "id": 3,
+    "song": "Dil Dhoondta Hai",
+    "artist": "Bhupinder Singh",
+    "text": "Dil dhoondta hai phir wohi, fursat ke raat din...",
+    "language": "Hindi",
+    "theme": "nostalgia",
+    "youtubeLink": "https://www.youtube.com/results?search_query=dil+dhoondta+hai+phir+wohi+bhupinder+gulzar+mausam",
+    "vibe_colors": { "background": "#0d1520", "accent": "#5a7fa8" }
+  },
+  {
+    "id": 4,
+    "song": "Aansu Bhi Chalte Hain",
+    "artist": "Unknown",
+    "text": "Aansu bhi chalte hain, dhadkan bhi chalti hai, kya karun is zindagi ka jo bina tere chalti hai...",
+    "language": "Hindi",
+    "theme": "heartbreak",
+    "youtubeLink": "https://www.youtube.com/results?search_query=aansu+dard+heartbreak+hindi+songs",
+    "vibe_colors": { "background": "#110f1e", "accent": "#7070c0" }
+  },
+  {
+    "id": 5,
+    "song": "Jo Beet Gayi So Baat Gayi",
+    "artist": "Harivansh Rai Bachchan",
+    "text": "Jo beet gayi so baat gayi, zindagi mein ek sitara tha...",
+    "language": "Hindi",
+    "theme": "loss",
+    "youtubeLink": "https://www.youtube.com/results?search_query=jo+beet+gayi+so+baat+gayi+harivansh+rai+bachchan",
+    "vibe_colors": { "background": "#131520", "accent": "#5580aa" }
+  },
+  {
+    "id": 6,
+    "song": "Mard Ko Nahi Rona",
+    "artist": "Gulzar",
+    "text": "Rota hoon mein toh sab kehte hain, mard ko nahi rona chahiye...",
+    "language": "Hindi",
+    "theme": "pain",
+    "youtubeLink": "https://www.youtube.com/results?search_query=mard+ko+nahi+rona+dard+emotional+hindi+songs",
+    "vibe_colors": { "background": "#0f1422", "accent": "#4a72a0" }
+  },
+  {
+    "id": 7,
+    "song": "Mohabbat Karne Wale",
+    "artist": "Lata Mangeshkar",
+    "text": "Mohabbat karne wale kam na honge, teri mehfil mein lekin hum na honge...",
+    "language": "Urdu",
+    "theme": "separation",
+    "youtubeLink": "https://www.youtube.com/results?search_query=mohabbat+karne+wale+kam+na+honge+lata",
+    "vibe_colors": { "background": "#111828", "accent": "#3a6898" }
+  }
+]

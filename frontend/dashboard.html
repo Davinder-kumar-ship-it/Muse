@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUSE — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="main-page">
+
+  <!-- NAV -->
+  <nav class="top-nav">
+    <a href="/dashboard" class="nav-brand">
+      <div class="nav-logo-icon">🎵</div>
+      <span class="site-name">MUSE</span>
+    </a>
+    <div class="nav-right">
+      <a href="/docs" class="nav-link">Docs</a>
+      <span id="usernameText" class="username-chip"></span>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+
+    <!-- API INFO BOX -->
+    <!-- CHANGE: shows mood-specific URL when a mood is selected -->
+    <div class="api-info-box">
+      <div class="api-info-header">
+        <span class="api-info-label">Live Endpoint</span>
+        <a href="/docs" class="docs-link">Full Docs →</a>
+      </div>
+      <div class="api-url-row">
+        <span class="method-badge badge-get">GET</span>
+        <span id="apiUrlText" class="api-url-text">http://localhost:8000/&lt;mood&gt;</span>
+        <button id="copyBtn" class="copy-btn">Copy</button>
+      </div>
+    </div>
+
+    <!-- MOOD PICKER -->
+    <div class="mood-section">
+      <h2 class="mood-title">How are you feeling today?</h2>
+      <p class="mood-subtitle">Pick a mood — we'll find the perfect song for you.</p>
+
+      <!-- CHANGE: mood cards now show their own endpoint URL on hover -->
+      <div class="mood-grid">
+        <button class="mood-card" data-mood="sad">
+          <span class="mood-icon">😢</span>
+          <span class="mood-name">Sad</span>
+          <span class="mood-desc">Words that feel your pain</span>
+          <span class="mood-endpoint">GET /sad</span>
+        </button>
+        <button class="mood-card" data-mood="happy">
+          <span class="mood-icon">😊</span>
+          <span class="mood-name">Happy</span>
+          <span class="mood-desc">Celebrate this moment</span>
+          <span class="mood-endpoint">GET /happy</span>
+        </button>
+        <button class="mood-card" data-mood="angry">
+          <span class="mood-icon">😤</span>
+          <span class="mood-name">Angry</span>
+          <span class="mood-desc">Let the fire speak</span>
+          <span class="mood-endpoint">GET /angry</span>
+        </button>
+        <button class="mood-card" data-mood="peaceful">
+          <span class="mood-icon">😌</span>
+          <span class="mood-name">Peaceful</span>
+          <span class="mood-desc">Quiet words for a quiet soul</span>
+          <span class="mood-endpoint">GET /peaceful</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div id="loadingDiv" class="loading-div" style="display:none;">
+      <div class="spin"></div>
+      <p class="loading-text">Finding the right song...</p>
+    </div>
+
+    <!-- ERROR -->
+    <div id="errorDiv" class="error-box" style="display:none;">
+      <span class="error-icon">⚠️</span>
+      <p id="errorMsg" class="error-msg-text"></p>
+    </div>
+
+    <!-- QUOTE / SONG RESULT -->
+    <!-- CHANGE: added song-card section showing song name, artist, and clickable YouTube link -->
+    <div id="quoteBox" class="quote-box" style="display:none;">
+      <div class="quote-header">
+        <span id="moodTag" class="mood-tag"></span>
+        <span id="quoteIdBadge" class="quote-id-badge"></span>
+      </div>
+
+      <!-- CHANGE: new song card showing song name and artist prominently -->
+      <div class="song-card">
+        <div class="song-card-icon">🎵</div>
+        <div class="song-card-info">
+          <p class="song-card-name" id="songName">—</p>
+          <p class="song-card-artist" id="artistName">—</p>
+        </div>
+      </div>
+
+      <!-- API message (e.g. "Recommended happy song — enjoy the vibe!") -->
+      <p id="apiMessage" class="api-message"></p>
+
+      <p id="quoteText"  class="quote-text"></p>
+      <p id="authorName" class="author-name"></p>
+
+      <div class="info-row">
+        <div class="info-item">
+          <span class="info-label">Language</span>
+          <span id="langText" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Theme</span>
+          <span id="themeText" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Endpoint</span>
+          <span id="quoteApiUrl" class="quote-api-url"></span>
+        </div>
+      </div>
+
+      <div class="quote-actions">
+        <button id="anotherBtn" class="another-btn">🔀 Another One</button>
+        <!-- CHANGE: YouTube button now shows the song name and is clearly clickable -->
+        <button id="youtubeBtn" class="youtube-btn">
+          <span class="yt-icon">▶</span>
+          <span id="ytSongLabel"> Listen on YouTube</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "song": "Aag Lagi Hai Seene Mein",
+    "artist": "Unknown",
+    "text": "Aag lagi hai seene mein, koi bujhane wala nahi, toot gaya hoon main lekin, koi sunane wala nahi...",
+    "language": "Hindi",
+    "theme": "rage",
+    "youtubeLink": "https://www.youtube.com/results?search_query=aag+lagi+seene+angry+hindi+songs",
+    "vibe_colors": { "background": "#1a0500", "accent": "#e05252" }
+  },
+  {
+    "id": 2,
+    "song": "Seena Taan Ke Khade Raho",
+    "artist": "Unknown",
+    "text": "Jab zulm ki aandhi aaye, seena taan ke khade raho, toota nahin jo kabhi, woh insaan tum ban jao...",
+    "language": "Hindi",
+    "theme": "defiance",
+    "youtubeLink": "https://www.youtube.com/results?search_query=defiance+strength+hindi+songs",
+    "vibe_colors": { "background": "#190400", "accent": "#d94040" }
+  },
+  {
+    "id": 3,
+    "song": "Gussa Woh Aag Hai",
+    "artist": "Unknown",
+    "text": "Gussa woh aag hai jo andar se jalaata hai, par wahi aag kabhi kabhi raah bhi dikhlaata hai...",
+    "language": "Hindi",
+    "theme": "fire",
+    "youtubeLink": "https://www.youtube.com/results?search_query=fire+energy+angry+hindi+songs",
+    "vibe_colors": { "background": "#1c0600", "accent": "#e86030" }
+  },
+  {
+    "id": 4,
+    "song": "Dil Mein Toofan Hai",
+    "artist": "Unknown",
+    "text": "Dil mein toofan hai, aankhon mein bijli hai, yeh jo dard hai mera, kismat ki khilji hai...",
+    "language": "Hindi",
+    "theme": "storm",
+    "youtubeLink": "https://www.youtube.com/results?search_query=toofan+bijli+angry+sad+songs+hindi",
+    "vibe_colors": { "background": "#180300", "accent": "#cc3030" }
+  },
+  {
+    "id": 5,
+    "song": "Haq Maangne Se Nahi Milta",
+    "artist": "Unknown",
+    "text": "Haq maangne se nahi milta, chheen ke lena padta hai, waqt aane pe har zulm ka hisaab dena padta hai...",
+    "language": "Hindi",
+    "theme": "justice",
+    "youtubeLink": "https://www.youtube.com/results?search_query=justice+revolution+protest+hindi+songs",
+    "vibe_colors": { "background": "#1b0500", "accent": "#dd4444" }
+  },
+  {
+    "id": 6,
+    "song": "Haar Mat Maanna",
+    "artist": "Unknown",
+    "text": "Chot lagi toh takleef hogi, baat buri lagi toh gussa bhi hoga, par haar mat maanna — yahi toh zindagi ka sabak hoga...",
+    "language": "Hindi",
+    "theme": "resilience",
+    "youtubeLink": "https://www.youtube.com/results?search_query=haar+mat+maanna+resilience+comeback+hindi+songs",
+    "vibe_colors": { "background": "#1a0400", "accent": "#e04848" }
+  },
+  {
+    "id": 7,
+    "song": "Deewarein Khud Ban Jao",
+    "artist": "Unknown",
+    "text": "Dushmani ka jawab dushmani nahi, himmat se jina seekho, toofan aane do — deewarein khud ban jao...",
+    "language": "Hindi",
+    "theme": "strength",
+    "youtubeLink": "https://www.youtube.com/results?search_query=strength+power+motivational+hindi+songs",
+    "vibe_colors": { "background": "#190300", "accent": "#d63838" }
+  }
+]

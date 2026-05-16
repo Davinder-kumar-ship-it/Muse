@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUSE — API Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="docs-page">
+
+  <!-- NAV -->
+  <nav class="top-nav">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo-icon">🎵</div>
+      <span class="site-name">MUSE</span>
+    </a>
+    <div class="nav-right">
+      <a href="/dashboard" class="nav-link">Dashboard</a>
+      <a href="/" class="nav-link">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="docs-hero">
+    <div class="docs-hero-badge">API v1.0</div>
+    <h1>MUSE API Reference</h1>
+    <p>A mood-based poetry & song recommendation API built with vanilla Node.js. Returns Hindi, Urdu & Punjabi verses with YouTube links.</p>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="docs-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Overview</div>
+        <a href="#intro"       class="sidebar-link active">Introduction</a>
+        <a href="#auth-flow"   class="sidebar-link">Authentication</a>
+        <a href="#base-url"    class="sidebar-link">Base URL</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Endpoints</div>
+        <a href="#ep-signup"   class="sidebar-link">POST /signup</a>
+        <a href="#ep-login"    class="sidebar-link">POST /login</a>
+        <a href="#ep-mood"     class="sidebar-link">POST /muse/alldata</a>
+        <a href="#ep-logout"   class="sidebar-link">PATCH /logout</a>
+        <a href="#ep-moods"    class="sidebar-link">GET /api/moods</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Resources</div>
+        <a href="#moods"       class="sidebar-link">Available Moods</a>
+        <a href="#response"    class="sidebar-link">Response Schema</a>
+        <a href="#errors"      class="sidebar-link">Error Codes</a>
+        <a href="#tryit"       class="sidebar-link">Try It</a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="docs-content">
+
+      <!-- INTRO -->
+      <section id="intro" class="docs-section">
+        <h2>Introduction</h2>
+        <p>MUSE is a token-authenticated REST API that returns mood-matched verses from Hindi, Urdu, and Punjabi poetry — along with YouTube search links for related songs.</p>
+        <p>Built entirely with <strong style="color:var(--text)">Node.js core modules</strong> — no Express, no frameworks. Tokens are session-based (in-memory). Users and their hashed passwords are persisted in a local JSON file.</p>
+        <div class="code-block">
+<span class="cm">// Typical flow</span>
+<span class="ck">1.</span> <span class="cv">POST /signup</span>   <span class="cm">→ create account</span>
+<span class="ck">2.</span> <span class="cv">POST /login</span>    <span class="cm">→ get token</span>
+<span class="ck">3.</span> <span class="cv">POST /muse/alldata</span> <span class="cm">{ token, mood } → get quote + YouTube link</span>
+<span class="ck">4.</span> <span class="cv">PATCH /logout</span>  <span class="cm">→ invalidate token</span>
+        </div>
+      </section>
+
+      <!-- BASE URL -->
+      <section id="base-url" class="docs-section">
+        <h2>Base URL</h2>
+        <div class="code-block"><span class="cv">http://localhost:8000</span></div>
+        <p>All endpoints are relative to this base URL. CORS is enabled for all origins.</p>
+      </section>
+
+      <!-- AUTH FLOW -->
+      <section id="auth-flow" class="docs-section">
+        <h2>Authentication</h2>
+        <p>MUSE uses simple token-based auth. Log in to receive a random hex token. Pass this token in the body of protected requests. Tokens live in memory — they are cleared when the server restarts.</p>
+        <div class="code-block">
+<span class="cm">// Protected request body example</span>
+{
+  <span class="ck">"token"</span>: <span class="cv">"a1b2c3d4e5f6..."</span>,
+  <span class="ck">"mood"</span>:  <span class="cv">"happy"</span>
+}
+        </div>
+      </section>
+
+      <!-- SIGNUP -->
+      <section id="ep-signup" class="docs-section">
+        <h2>POST /signup</h2>
+        <p>Create a new user account. Passwords are hashed with <code style="color:var(--gold);font-family:monospace">crypto.scrypt</code> + a random 16-byte salt before storage.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge badge-post">POST</span>
+            <span class="endpoint-path">/signup</span>
+            <span class="endpoint-desc">No auth required</span>
+          </div>
+          <div class="endpoint-body">
+            <h3>Request Body</h3>
+            <table class="field-table">
+              <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td class="field-name">username</td><td class="field-type">string</td><td class="field-req">Required</td><td class="field-desc">Unique username</td></tr>
+                <tr><td class="field-name">password</td><td class="field-type">string</td><td class="field-req">Required</td><td class="field-desc">Min 6 characters</td></tr>
+              </tbody>
+            </table>
+            <div class="code-block">
+<span class="cm">// Request</span>
+{
+  <span class="ck">"username"</span>: <span class="cv">"priya"</span>,
+  <span class="ck">"password"</span>: <span class="cv">"mypassword"</span>
+}
+
+<span class="cm">// Response 201</span>
+{ <span class="ck">"status"</span>: <span class="cn">201</span>, <span class="ck">"message"</span>: <span class="cv">"Account created successfully"</span> }
+            </div>
+            <div class="status-row">
+              <span class="status-badge s-201">201 Created</span>
+              <span class="status-badge s-400">400 Missing fields</span>
+              <span class="status-badge s-409">409 Username exists</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOGIN -->
+      <section id="ep-login" class="docs-section">
+        <h2>POST /login</h2>
+        <p>Authenticate and receive a session token. The token must be included in all subsequent protected requests.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge badge-post">POST</span>
+            <span class="endpoint-path">/login</span>
+            <span class="endpoint-desc">No auth required</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="code-block">
+<span class="cm">// Request</span>
+{ <span class="ck">"username"</span>: <span class="cv">"priya"</span>, <span class="ck">"password"</span>: <span class="cv">"mypassword"</span> }
+
+<span class="cm">// Response 200</span>
+{
+  <span class="ck">"status"</span>:   <span class="cn">200</span>,
+  <span class="ck">"token"</span>:    <span class="cv">"a3f8c2d1e9b0..."</span>,
+  <span class="ck">"username"</span>: <span class="cv">"priya"</span>
+}
+            </div>
+            <div class="status-row">
+              <span class="status-badge s-200">200 OK</span>
+              <span class="status-badge s-401">401 Invalid credentials</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MUSE/ALLDATA -->
+      <section id="ep-mood" class="docs-section">
+        <h2>POST /muse/alldata</h2>
+        <p>Fetch a random mood-matched verse. Returns the quote text, author, language, theme, vibe colors, and a YouTube search URL.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge badge-post">POST</span>
+            <span class="endpoint-path">/muse/alldata</span>
+            <span class="endpoint-desc">🔒 Token required</span>
+          </div>
+          <div class="endpoint-body">
+            <table class="field-table">
+              <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td class="field-name">token</td><td class="field-type">string</td><td class="field-req">Required</td><td class="field-desc">Session token from /login</td></tr>
+                <tr><td class="field-name">mood</td><td class="field-type">string</td><td class="field-req">Required</td><td class="field-desc">One of: happy, sad, angry, peaceful</td></tr>
+              </tbody>
+            </table>
+            <div class="code-block">
+<span class="cm">// Request</span>
+{ <span class="ck">"token"</span>: <span class="cv">"a3f8c2d1e9b0..."</span>, <span class="ck">"mood"</span>: <span class="cv">"sad"</span> }
+
+<span class="cm">// Response 200</span>
+{
+  <span class="ck">"status"</span>:  <span class="cn">200</span>,
+  <span class="ck">"emotion"</span>: <span class="cv">"sad"</span>,
+  <span class="ck">"quote"</span>: {
+    <span class="ck">"id"</span>:       <span class="cn">1</span>,
+    <span class="ck">"text"</span>:     <span class="cv">"Hazaron khwahishen aisi..."</span>,
+    <span class="ck">"author"</span>:   <span class="cv">"Mirza Ghalib"</span>,
+    <span class="ck">"language"</span>: <span class="cv">"Urdu"</span>,
+    <span class="ck">"theme"</span>:    <span class="cv">"longing"</span>,
+    <span class="ck">"youtube"</span>:  <span class="cv">"https://www.youtube.com/results?search_query=..."</span>,
+    <span class="ck">"vibe_colors"</span>: { <span class="ck">"background"</span>: <span class="cv">"#0f1624"</span>, <span class="ck">"accent"</span>: <span class="cv">"#4a90d9"</span> }
+  }
+}
+            </div>
+            <div class="status-row">
+              <span class="status-badge s-200">200 OK</span>
+              <span class="status-badge s-400">400 Invalid mood</span>
+              <span class="status-badge s-401">401 Invalid token</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOGOUT -->
+      <section id="ep-logout" class="docs-section">
+        <h2>PATCH /logout</h2>
+        <p>Invalidate the current session token. The token is removed from the in-memory session store.</p>
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge badge-post" style="background:rgba(201,168,76,.1);color:var(--gold)">PATCH</span>
+            <span class="endpoint-path">/logout</span>
+            <span class="endpoint-desc">🔒 Token required</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="code-block">
+<span class="cm">// Request</span>
+{ <span class="ck">"token"</span>: <span class="cv">"a3f8c2d1e9b0..."</span> }
+
+<span class="cm">// Response 200</span>
+{ <span class="ck">"status"</span>: <span class="cn">200</span>, <span class="ck">"message"</span>: <span class="cv">"Logged out successfully"</span> }
+            </div>
+            <div class="status-row">
+              <span class="status-badge s-200">200 OK</span>
+              <span class="status-badge s-401">401 Invalid token</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GET MOODS -->
+      <section id="ep-moods" class="docs-section">
+        <h2>GET /api/moods</h2>
+        <p>Public endpoint. Returns the list of available mood values.</p>
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge badge-get">GET</span>
+            <span class="endpoint-path">/api/moods</span>
+            <span class="endpoint-desc">Public</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="code-block">
+<span class="cm">// Response 200</span>
+{
+  <span class="ck">"status"</span>: <span class="cn">200</span>,
+  <span class="ck">"moods"</span>: [<span class="cv">"happy"</span>, <span class="cv">"sad"</span>, <span class="cv">"angry"</span>, <span class="cv">"peaceful"</span>]
+}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOODS REFERENCE -->
+      <section id="moods" class="docs-section">
+        <h2>Available Moods</h2>
+        <p>Each mood has 7 verse entries drawn from Hindi, Urdu, and Punjabi poetry. A random entry is returned on each request.</p>
+        <div class="mood-badges">
+          <span class="mood-badge sad">😢 sad</span>
+          <span class="mood-badge happy">😊 happy</span>
+          <span class="mood-badge angry">😤 angry</span>
+          <span class="mood-badge peaceful">😌 peaceful</span>
+        </div>
+        <table class="field-table" style="margin-top:16px">
+          <thead><tr><th>Mood</th><th>Languages</th><th>Themes</th></tr></thead>
+          <tbody>
+            <tr><td class="field-name">sad</td><td class="field-desc">Urdu, Hindi, Punjabi</td><td class="field-desc">longing, grief, nostalgia, heartbreak, loss, pain, separation</td></tr>
+            <tr><td class="field-name">happy</td><td class="field-desc">Hindi</td><td class="field-desc">joy, positivity, celebration, warmth, excitement, gratitude, bliss</td></tr>
+            <tr><td class="field-name">angry</td><td class="field-desc">Hindi</td><td class="field-desc">rage, defiance, fire, storm, justice, resilience, strength</td></tr>
+            <tr><td class="field-name">peaceful</td><td class="field-desc">Urdu, Hindi</td><td class="field-desc">serenity, clarity, letting go, contentment, calm, mindfulness, stillness</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- RESPONSE SCHEMA -->
+      <section id="response" class="docs-section">
+        <h2>Response Schema</h2>
+        <p>All responses include a <code style="color:var(--gold);font-family:monospace">status</code> field matching the HTTP status code. Error responses use an <code style="color:var(--gold);font-family:monospace">error</code> field; success responses use <code style="color:var(--gold);font-family:monospace">message</code> or data fields.</p>
+        <table class="field-table">
+          <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td class="field-name">status</td><td class="field-type">number</td><td class="field-desc">HTTP status code</td></tr>
+            <tr><td class="field-name">emotion</td><td class="field-type">string</td><td class="field-desc">The mood that was queried</td></tr>
+            <tr><td class="field-name">quote.id</td><td class="field-type">number</td><td class="field-desc">Entry ID within mood dataset</td></tr>
+            <tr><td class="field-name">quote.text</td><td class="field-type">string</td><td class="field-desc">Verse text</td></tr>
+            <tr><td class="field-name">quote.author</td><td class="field-type">string</td><td class="field-desc">Poet/author name</td></tr>
+            <tr><td class="field-name">quote.language</td><td class="field-type">string</td><td class="field-desc">Language of the verse</td></tr>
+            <tr><td class="field-name">quote.theme</td><td class="field-type">string</td><td class="field-desc">Emotional theme tag</td></tr>
+            <tr><td class="field-name">quote.youtube</td><td class="field-type">string</td><td class="field-desc">YouTube search URL for related songs</td></tr>
+            <tr><td class="field-name">quote.vibe_colors</td><td class="field-type">object</td><td class="field-desc">Suggested background & accent hex colors</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ERROR CODES -->
+      <section id="errors" class="docs-section">
+        <h2>Error Codes</h2>
+        <table class="field-table">
+          <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><span class="status-badge s-400" style="display:inline-flex">400</span></td><td class="field-desc">Bad Request — missing or invalid fields</td></tr>
+            <tr><td><span class="status-badge s-401" style="display:inline-flex">401</span></td><td class="field-desc">Unauthorized — invalid/expired token or wrong credentials</td></tr>
+            <tr><td><span class="status-badge s-409" style="display:inline-flex">409</span></td><td class="field-desc">Conflict — username already exists</td></tr>
+            <tr><td><span class="status-badge s-500" style="display:inline-flex">500</span></td><td class="field-desc">Internal Server Error</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- TRY IT -->
+      <section id="tryit" class="docs-section">
+        <h2>Try It</h2>
+        <p>Use the interactive tester below to call MUSE endpoints directly from your browser.</p>
+
+        <div class="tryit-panel">
+          <div class="tryit-header">
+            <div class="tryit-dot"></div>
+            <span class="tryit-title">API Tester — Live</span>
+          </div>
+          <div class="tryit-body">
+
+            <!-- step 1: login -->
+            <div style="margin-bottom:24px;">
+              <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;">Step 1 — Get Token</h3>
+              <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="t_username" placeholder="your_username" />
+              </div>
+              <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="t_password" placeholder="••••••••" />
+              </div>
+              <button class="tryit-send-btn" id="t_loginBtn">Login →</button>
+              <p id="t_tokenStatus" style="margin-top:10px;font-size:.8rem;color:var(--muted);"></p>
+            </div>
+
+            <!-- step 2: get quote -->
+            <div>
+              <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;">Step 2 — Get Mood Quote</h3>
+              <div class="input-group">
+                <label>Mood</label>
+                <select id="t_mood">
+                  <option value="sad">😢 Sad</option>
+                  <option value="happy">😊 Happy</option>
+                  <option value="angry">😤 Angry</option>
+                  <option value="peaceful">😌 Peaceful</option>
+                </select>
+              </div>
+              <button class="tryit-send-btn" id="t_quoteBtn" disabled>Get Quote →</button>
+            </div>
+
+            <pre id="tryitResponse" class="tryit-response"></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+  (function() {
+    var API = 'http://localhost:8000';
+    var sessionToken = null;
+
+    // sidebar active link on scroll
+    var sections = document.querySelectorAll('.docs-section');
+    var links    = document.querySelectorAll('.sidebar-link');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY + 120;
+      sections.forEach(function(sec) {
+        if (sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY) {
+          links.forEach(function(l) { l.classList.remove('active'); });
+          var active = document.querySelector('.sidebar-link[href="#' + sec.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    });
+
+    // Try-it: login
+    document.getElementById('t_loginBtn').addEventListener('click', async function() {
+      var btn = this;
+      var u = document.getElementById('t_username').value.trim();
+      var p = document.getElementById('t_password').value;
+      var statusEl = document.getElementById('t_tokenStatus');
+      var respEl   = document.getElementById('tryitResponse');
+      if (!u || !p) { statusEl.textContent = 'Fill in username and password.'; return; }
+      btn.disabled = true; btn.textContent = 'Logging in...';
+      try {
+        var res  = await fetch(API + '/login', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({username:u,password:p}) });
+        var data = await res.json();
+        respEl.style.display = 'block';
+        respEl.textContent = JSON.stringify(data, null, 2);
+        if (res.ok && data.token) {
+          sessionToken = data.token;
+          statusEl.textContent = '✅ Token received. You can now get a quote.';
+          statusEl.style.color = 'var(--success)';
+          document.getElementById('t_quoteBtn').disabled = false;
+        } else {
+          statusEl.textContent = '❌ ' + (data.error || 'Login failed');
+          statusEl.style.color = 'var(--error)';
+        }
+      } catch(e) {
+        statusEl.textContent = 'Cannot reach server. Make sure it is running on port 8000.';
+        statusEl.style.color = 'var(--error)';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Login →';
+      }
+    });
+
+    // Try-it: get quote
+    document.getElementById('t_quoteBtn').addEventListener('click', async function() {
+      if (!sessionToken) return;
+      var btn    = this;
+      var mood   = document.getElementById('t_mood').value;
+      var respEl = document.getElementById('tryitResponse');
+      btn.disabled = true; btn.textContent = 'Fetching...';
+      try {
+        var res  = await fetch(API + '/muse/alldata', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({token:sessionToken, mood:mood}) });
+        var data = await res.json();
+        respEl.style.display = 'block';
+        respEl.textContent = JSON.stringify(data, null, 2);
+      } catch(e) {
+        respEl.style.display = 'block';
+        respEl.textContent = 'Error: ' + e.message;
+      } finally {
+        btn.disabled = false; btn.textContent = 'Get Quote →';
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>

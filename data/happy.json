@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "song": "Zindagi Ek Safar Hai Suhana",
+    "artist": "Kishore Kumar",
+    "text": "Zindagi ek safar hai suhana, yahan kal kya ho kisne jana...",
+    "language": "Hindi",
+    "theme": "joy",
+    "youtubeLink": "https://www.youtube.com/results?search_query=zindagi+ek+safar+hai+suhana+kishore+kumar",
+    "vibe_colors": { "background": "#1a1600", "accent": "#f0c040" }
+  },
+  {
+    "id": 2,
+    "song": "Khushi Ki Raah",
+    "artist": "Unknown",
+    "text": "Khushi ki raah par chalna seekho, har pal ko apna banana seekho...",
+    "language": "Hindi",
+    "theme": "positivity",
+    "youtubeLink": "https://www.youtube.com/results?search_query=khushi+happy+hindi+songs",
+    "vibe_colors": { "background": "#181500", "accent": "#e6b830" }
+  },
+  {
+    "id": 3,
+    "song": "Ye Dil Deewana",
+    "artist": "Udit Narayan",
+    "text": "Ye dil deewana, dhoondta hai ek dil mastana, khushiyon ka zamaana...",
+    "language": "Hindi",
+    "theme": "celebration",
+    "youtubeLink": "https://www.youtube.com/results?search_query=ye+dil+deewana+udit+narayan",
+    "vibe_colors": { "background": "#1c1800", "accent": "#f5cc50" }
+  },
+  {
+    "id": 4,
+    "song": "Pal Pal Dil Ke Paas",
+    "artist": "Kishore Kumar",
+    "text": "Pal pal dil ke paas tum rehte ho, jeevan ki dor tum hi se kehte ho...",
+    "language": "Hindi",
+    "theme": "warmth",
+    "youtubeLink": "https://www.youtube.com/results?search_query=pal+pal+dil+ke+paas+kishore+kumar",
+    "vibe_colors": { "background": "#1a1200", "accent": "#e8a820" }
+  },
+  {
+    "id": 5,
+    "song": "Aaj Ki Raat",
+    "artist": "A.R. Rahman",
+    "text": "Aaj ki raat koi aane ko hai, khushiyon ka kaafila laane ko hai...",
+    "language": "Hindi",
+    "theme": "excitement",
+    "youtubeLink": "https://www.youtube.com/results?search_query=aaj+ki+raat+ar+rahman",
+    "vibe_colors": { "background": "#191600", "accent": "#f2c040" }
+  },
+  {
+    "id": 6,
+    "song": "Muskurana",
+    "artist": "Lata Mangeshkar",
+    "text": "Muskurana seekho toh duniya muskurati hai, apni khushi mein khud ki jhalkiya dikhti hai...",
+    "language": "Hindi",
+    "theme": "gratitude",
+    "youtubeLink": "https://www.youtube.com/results?search_query=muskurana+lata+mangeshkar+bollywood",
+    "vibe_colors": { "background": "#1b1700", "accent": "#edc848" }
+  },
+  {
+    "id": 7,
+    "song": "Rang Barse",
+    "artist": "Amitabh Bachchan",
+    "text": "Rangon se bhari hai duniya, zindagi ke rang nikharo...",
+    "language": "Hindi",
+    "theme": "bliss",
+    "youtubeLink": "https://www.youtube.com/results?search_query=rang+barse+amitabh+bachchan+holi",
+    "vibe_colors": { "background": "#1c1900", "accent": "#f0c840" }
+  }
+]

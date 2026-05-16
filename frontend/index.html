@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUSE — Mood-Based Song API</title>
+  <meta name="description" content="MUSE: Mood-based song recommendation API with Hindi, Urdu & Punjabi poetry." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-header">
+      <div class="site-logo">
+        <div class="logo-icon">🎵</div>
+        <span class="site-name">MUSE</span>
+      </div>
+      <p class="site-tagline">Mood-based song recommendations via API</p>
+    </div>
+
+    <div class="auth-box">
+      <div class="tab-row">
+        <button class="tab active" data-tab="login">Sign In</button>
+        <button class="tab"        data-tab="register">Sign Up</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="loginForm" class="form-box active">
+        <div class="input-group">
+          <h5>Username</h5>
+          <input type="text" id="loginUsername" placeholder="your_username" autocomplete="username" />
+        </div>
+        <div class="input-group">
+          <h5>Password</h5>
+          <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <p id="loginError" class="error-text"></p>
+        <button class="submit-btn" id="loginBtn">Sign In</button>
+      </div>
+
+      <!-- REGISTER -->
+      <div id="registerForm" class="form-box">
+        <div class="input-group">
+          <h5>Username</h5>
+          <input type="text" id="regUsername" placeholder="your_username" autocomplete="username" />
+        </div>
+        <div class="input-group">
+          <h5>Password <span class="small-note">(min 6 chars)</span></h5>
+          <input type="password" id="regPassword" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+        <p id="registerError"   class="error-text"></p>
+        <p id="registerSuccess" class="success-text"></p>
+        <button class="submit-btn" id="registerBtn">Create Account</button>
+      </div>
+    </div>
+
+    <p class="auth-footer">
+      <a href="/docs" style="color:var(--gold);text-decoration:none;font-size:.82rem;">
+        📄 View API Documentation →
+      </a>
+    </p>
+  </div>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>

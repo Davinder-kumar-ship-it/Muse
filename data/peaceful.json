@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "song": "Sukoon Woh Cheez Hai",
+    "artist": "Unknown",
+    "text": "Sukoon woh cheez hai jo milti hai teri yaad mein, khamoshi bhi bolti hai kuch andaaz mein...",
+    "language": "Urdu",
+    "theme": "serenity",
+    "youtubeLink": "https://www.youtube.com/results?search_query=sukoon+peaceful+sufi+qawwali+songs",
+    "vibe_colors": { "background": "#081510", "accent": "#4cad7c" }
+  },
+  {
+    "id": 2,
+    "song": "Chain Aata Hai",
+    "artist": "Unknown",
+    "text": "Chain aata hai jab dil saaf hota hai, aasman bhi wahi hai jo saaf hota hai...",
+    "language": "Hindi",
+    "theme": "clarity",
+    "youtubeLink": "https://www.youtube.com/results?search_query=chain+sukoon+calm+soothing+hindi+songs",
+    "vibe_colors": { "background": "#091410", "accent": "#44a070" }
+  },
+  {
+    "id": 3,
+    "song": "Sahil Pe Baith Ke",
+    "artist": "Gulzar",
+    "text": "Sahil pe baith ke dekha jo maine dariya ko, har leher mujhse keh rahi thi — chhod de jo bekar hai...",
+    "language": "Hindi",
+    "theme": "letting go",
+    "youtubeLink": "https://www.youtube.com/results?search_query=gulzar+peaceful+meditative+music",
+    "vibe_colors": { "background": "#071210", "accent": "#52b882" }
+  },
+  {
+    "id": 4,
+    "song": "Thodi Si Khwahish",
+    "artist": "Unknown",
+    "text": "Thodi si khwahish, thoda sa sukoon, yehi toh hai zindagi ka asli junoon...",
+    "language": "Hindi",
+    "theme": "contentment",
+    "youtubeLink": "https://www.youtube.com/results?search_query=contentment+soothing+soft+hindi+songs",
+    "vibe_colors": { "background": "#081412", "accent": "#48a876" }
+  },
+  {
+    "id": 5,
+    "song": "Shant Rehna",
+    "artist": "Unknown",
+    "text": "Shant rehna bhi ek junoon hai, toofan ke baad wahi toh sukoon hai...",
+    "language": "Hindi",
+    "theme": "calm",
+    "youtubeLink": "https://www.youtube.com/results?search_query=shanti+calm+meditation+peaceful+hindi+songs",
+    "vibe_colors": { "background": "#091310", "accent": "#4aa878" }
+  },
+  {
+    "id": 6,
+    "song": "Mann Ka Bojh",
+    "artist": "Unknown",
+    "text": "Mann ka bojh halka karo, dil ki baat sunne do, zindagi khoobsurat hai isko jeene do...",
+    "language": "Hindi",
+    "theme": "mindfulness",
+    "youtubeLink": "https://www.youtube.com/results?search_query=mann+ki+shanti+mindful+calm+songs",
+    "vibe_colors": { "background": "#081512", "accent": "#46a472" }
+  },
+  {
+    "id": 7,
+    "song": "Raat Ki Khamoshi",
+    "artist": "Unknown",
+    "text": "Raat ki khamoshi mein, chand ki roshni mein, dil ko sukoon milta hai teri sohbat mein...",
+    "language": "Urdu",
+    "theme": "stillness",
+    "youtubeLink": "https://www.youtube.com/results?search_query=raat+chand+sufi+peaceful+qawwali",
+    "vibe_colors": { "background": "#071410", "accent": "#50b07e" }
+  }
+]
