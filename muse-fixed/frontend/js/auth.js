@@ -1,6 +1,7 @@
 'use strict';
 
-const API = 'https://muse-7g3h.vercel.app/signup';
+// Auto-detect base URL so this works on any deployment (local or Vercel)
+const API = window.location.origin;
 
 // ── Tab switching ────────────────────────────────────────────────────────────
 document.querySelectorAll('.tab').forEach(function(tab) {

@@ -1,6 +1,7 @@
 'use strict';
 
-var API      = 'https://muse-7g3h.vercel.app/signup';
+// Auto-detect base URL so this works on any deployment (local or Vercel)
+var API      = window.location.origin;
 var token    = localStorage.getItem('token');
 var username = localStorage.getItem('username');
 var currentMood = null;

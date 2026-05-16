@@ -7,7 +7,7 @@ const downloadFile=(filepath,encoding='utf8')=>
     {
         fs.readFile(filepath,encoding,(err,fileData)=>{
                 
-            if(!err)resolve(fileData);
+            if(!err) return resolve(fileData);
             reject(err);
         })
     })
